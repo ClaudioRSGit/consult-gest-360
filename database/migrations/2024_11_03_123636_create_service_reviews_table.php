@@ -14,7 +14,8 @@ class CreateServiceReviewsTable extends Migration
     public function up()
     {
         Schema::create('service_reviews', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->increments('id');
+            $table->uuid('uuid');
             $table->uuid('activity_id');
             $table->uuid('client_id');
             $table->unsignedInteger('rating');
@@ -22,8 +23,8 @@ class CreateServiceReviewsTable extends Migration
             $table->date('date');
             $table->timestamps();
 
-            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            // $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
+            // $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });
     }
 

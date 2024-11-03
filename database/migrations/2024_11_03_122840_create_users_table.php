@@ -14,10 +14,10 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('uuid');
+            $table->increments('id');
+            $table->uuid('uuid');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('password');
             $table->string('role')->default('client'); // admin, consultant, client
             $table->boolean('status')->default(true); // ativo ou inativo

@@ -14,17 +14,18 @@ class CreateConsultanciesTable extends Migration
     public function up()
     {
         Schema::create('consultancies', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('client_id');
-            $table->uuid('user_id');
+            $table->integer('id');
+            $table->uuid('uuid');
+            $table->uuid('client_uuid');
+            $table->uuid('user_uuid');
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->string('status');
             $table->timestamps();
 
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('client_uuid')->references('uuid')->on('clients');
+            // $table->foreign('user_uuid')->references('uuid')->on('users');
         });
     }
 

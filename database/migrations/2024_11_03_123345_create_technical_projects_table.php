@@ -14,7 +14,8 @@ class CreateTechnicalProjectsTable extends Migration
     public function up()
     {
         Schema::create('technical_projects', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->increments('id');
+            $table->uuid('uuid');
             $table->uuid('client_id');
             $table->uuid('user_id');
             $table->text('description');
@@ -23,8 +24,8 @@ class CreateTechnicalProjectsTable extends Migration
             $table->string('status');
             $table->timestamps();
 
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
